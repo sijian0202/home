@@ -1,0 +1,8 @@
+/* Match the 430px content area plus the original 22px side padding. */
+.app-shell {
+  width: 100%;
+  max-width: 474px;
+  margin-inline: auto;
+  position: relative;
+  transform: translateZ(0);
+}

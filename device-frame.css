@@ -1,0 +1,51 @@
+.device-frame { display: contents; }
+.device-chrome { display: none; }
+@media (min-width: 1100px) {
+  :root { --device-width: min(430px, calc((100dvh - 64px) * .461373)); --device-left: max(32px, calc((100vw - 1376px) / 2)); }
+  .device-frame {
+    display: block;
+    position: relative;
+    width: var(--device-width);
+    aspect-ratio: 430 / 932;
+    margin: 32px 0 32px var(--device-left);
+    padding: 10px;
+    border: 1px solid #817a86;
+    border-radius: 57px;
+    background: #151416;
+    box-shadow: inset 0 0 0 2px #302d34, inset 0 0 0 3px #9b929e, inset 0 0 0 4px #171619, 0 18px 28px -20px rgb(0 0 0 / 45%), 0 2px 4px rgb(0 0 0 / 15%);
+  }
+  .device-frame .app-shell {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    margin: 0;
+    border-radius: 46px;
+    overflow: hidden;
+  }
+  .device-frame .screen { padding-top: 67px; }
+  .device-frame .menu { padding-top: 94px; }
+  .device-frame .menu-close { top: 65px; }
+  .device-frame .bottom-nav::after { display: none; }
+  .device-chrome { display: block; pointer-events: none; }
+  .device-status { position: absolute; z-index: 100; top: 13px; left: 11px; right: 11px; height: 45px; color: #111; }
+  .device-clock { position: absolute; top: 15px; left: 24px; font: 650 12px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  .device-island { position: absolute; top: 8px; left: 50%; width: 31%; height: 28px; transform: translateX(-50%); border-radius: 30px; background: #030303; }
+  .device-island > span { position: absolute; top: 9px; right: 11px; width: 9px; height: 9px; border-radius: 50%; background: #11131e; box-shadow: inset 0 0 0 2px #08090e; }
+  .device-status-icons { display: flex; align-items: center; gap: 5px; position: absolute; top: 14px; right: 23px; height: 14px; }
+  .device-signal { display: flex; align-items: flex-end; gap: 2px; height: 11px; }
+  .device-signal i { display: block; width: 2px; border-radius: 1px; background: #111; }
+  .device-signal i:nth-child(1) { height: 4px; }
+  .device-signal i:nth-child(2) { height: 6px; }
+  .device-signal i:nth-child(3) { height: 8px; }
+  .device-signal i:nth-child(4) { height: 11px; }
+  .device-battery { position: relative; width: 20px; height: 10px; padding: 1px; border: 1px solid #888; border-radius: 3px; }
+  .device-battery::after { content: ""; position: absolute; top: 2px; right: -3px; width: 2px; height: 4px; background: #888; border-radius: 0 1px 1px 0; }
+  .device-battery i { display: block; width: 100%; height: 100%; background: #111; border-radius: 1px; }
+  .device-home { position: absolute; bottom: 20px; left: 50%; z-index: 100; width: 34%; height: 4px; border-radius: 8px; transform: translateX(-50%); background: #111; }
+  .device-volume, .device-power { position: absolute; width: 3px; border-radius: 2px; background: #5a535e; box-shadow: inset 1px 0 #aca2af; }
+  .device-volume { left: -3px; height: 42px; }
+  .device-volume-one { top: 19%; }
+  .device-volume-two { top: 26%; }
+  .device-power { right: -3px; top: 24%; height: 65px; }
+  .project-notes { left: calc(var(--device-left) + var(--device-width) + 76px); }
+}

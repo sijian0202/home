@@ -1,0 +1,35 @@
+.brand-ticket { display: none; }
+.rules-paper-shadow { width: 100%; max-width: 820px; filter: drop-shadow(0 2px 2px rgb(0 0 0 / 6%)) drop-shadow(0 8px 12px rgb(0 0 0 / 6%)); }
+.paper-material { position: relative; background-color: #f1f1ef; background-image: linear-gradient(97deg, rgb(255 255 255 / 16%), transparent 40%, rgb(0 0 0 / 1%)); }
+.paper-material::before { content: ""; position: absolute; inset: 0; background: url('./paper-grain.svg') repeat; opacity: .055; pointer-events: none; z-index: 0; }
+.paper-material > * { position: relative; z-index: 1; }
+.project-receipt { --receipt-paper: #f1f1ef; background-color: var(--receipt-paper); box-shadow: none; margin-bottom: 0; padding: 38px 34px; }
+.project-receipt::after { display: none; }
+.project-receipt .project-rules { margin-top: 0; }
+.project-receipt .project-rail-title { font-size: 25px; line-height: 1.65; margin-bottom: 24px; }
+.project-receipt .project-rail-title br { display: inline; }
+.project-receipt .project-kicker { margin: 0 0 17px; font-family: ui-monospace, "Microsoft YaHei", monospace; font-size: 10px; color: #666; }
+.project-receipt .project-rule-body { padding-left: 0; }
+.project-receipt .project-rule summary { font-size: 13px; }
+.project-receipt .project-rule-body h3 { line-height: 1.8; }
+.project-receipt .project-rule-body p { line-height: 1.95; color: #626360; }
+@media (min-width: 1100px) {
+  :root {
+    --presentation-inset: max(24px, calc((100vw - 1480px) / 2));
+    --presentation-gap: clamp(22px, 2.5vw, 40px);
+    --brand-width: min(284px, 20vw, calc((100dvh - 64px) * .381129));
+    --device-left: calc(var(--presentation-inset) + var(--brand-width) + var(--presentation-gap));
+  }
+  .brand-ticket { display: block; position: fixed; left: var(--presentation-inset); top: calc(32px + var(--device-width) * 1.08372093); transform: translateY(-50%); width: var(--brand-width); filter: drop-shadow(0 2px 2px rgb(0 0 0 / 6%)) drop-shadow(0 8px 12px rgb(0 0 0 / 7%)); }
+  .brand-paper { padding: 10px 0; }
+  .brand-art { position: relative; width: 100%; aspect-ratio: 412 / 1081; overflow: hidden; }
+  .brand-art img { position: absolute; top: -4.903%; left: -9.223%; width: 109.223%; max-width: none; height: auto; mix-blend-mode: multiply; }
+  .brand-store-link { position: absolute; left: 13.35%; top: 78.8%; width: 27%; height: 10.2%; border-radius: 50%; }
+  .brand-store-link:focus-visible { outline: 2px solid #555; outline-offset: 4px; }
+  .project-notes { left: calc(var(--device-left) + var(--device-width) + var(--presentation-gap)); right: var(--presentation-inset); top: 24px; bottom: 22px; padding: 8px 14px 14px 0; }
+}
+@media (min-width: 1100px) and (max-width: 1279px) {
+  .project-receipt { padding: 30px 24px; }
+  .project-receipt .project-rail-title { font-size: 22px; }
+  .project-receipt .project-rule-body p { font-size: 13px; }
+}
