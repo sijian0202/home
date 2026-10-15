@@ -8,6 +8,34 @@ chrome.className = 'device-chrome';
 chrome.setAttribute('aria-hidden', 'true');
 chrome.innerHTML = `<div class="device-status"><span class="device-clock">9:41</span><div class="device-island"><span></span></div><div class="device-status-icons"><span class="device-signal"><i></i><i></i><i></i><i></i></span><svg class="device-wifi" width="17" height="13" viewBox="0 0 20 15" fill="none"><path d="M2 5C6.4 1.2 13.6 1.2 18 5M5 8C7.7 5.7 12.3 5.7 15 8M8 11C9.1 10.1 10.9 10.1 12 11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="14" r="1" fill="currentColor"/></svg><span class="device-battery"><i></i></span></div></div><span class="device-volume device-volume-one"></span><span class="device-volume device-volume-two"></span><span class="device-power"></span><span class="device-home"></span>`;
 device.append(chrome);
+const entry = document.createElement('div');
+entry.className = 'demo-entry';
+const entryPaper = document.createElement('button');
+entryPaper.type = 'button';
+entryPaper.className = 'demo-entry-paper';
+entryPaper.setAttribute('aria-label', '体验，从点击这里开始');
+entryPaper.innerHTML = '<span class="demo-entry-copy"><span class="demo-entry-title">体验</span><span class="demo-entry-subtitle">从点击这里开始</span></span>';
+entry.append(entryPaper);
+device.append(entry);
+demo.inert = true;
+entryPaper.addEventListener('click', () => {
+  if (entry.classList.contains('is-leaving')) return;
+  entry.classList.add('is-leaving');
+  entryPaper.disabled = true;
+  let finished = false;
+  const finish = () => {
+    if (finished) return;
+    finished = true;
+    entry.remove();
+    demo.inert = dialog.open;
+    if (!dialog.open) demo.querySelector('button')?.focus({ preventScroll: true });
+  };
+  entryPaper.addEventListener('transitionend', event => {
+    if (event.propertyName === 'transform') finish();
+  });
+  // Reduced-motion and background tabs may not dispatch transitionend.
+  setTimeout(finish, matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 760);
+});
 const rules = [
   ['匿名与私密', '匿名的是提问者身份', '普通用户看不到提问者身份，回答则归属于回答者账号。匿名控制身份展示，私密控制内容可见范围，两者相互独立。'],
   ['邀请与参与', '邀请表达期待，公开允许更多回应', '选择已关注的人发出邀请，受邀者在“收到”中看到问题。其他用户也能在公开浏览路径中回答公开问题，但不会因此收到邀请。'],
@@ -73,4 +101,4 @@ open.addEventListener('click', () => {
 });
 dialog.querySelector('.project-close').addEventListener('click', () => dialog.close());
 dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
-dialog.addEventListener('close', () => { demo.inert = false; open.focus(); });
+dialog.addEventListener('close', () => { demo.inert = entry.isConnected; open.focus(); });
