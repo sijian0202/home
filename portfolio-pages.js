@@ -261,19 +261,30 @@ const observer = new IntersectionObserver(entries => {
 }, { root: deck, threshold: [0, .55] });
 pages.forEach(page => observer.observe(page));
 
-// Let scrollable Demo content consume input; paginate only its non-scrolling surround.
-function hasScrollableContent(event, doc) {
+// Interactive areas never hand their scroll gestures to portfolio pagination.
+function isDemoInteraction(event, doc) {
+  return doc !== document && event.composedPath().some(element =>
+    element?.nodeType === 1 && element.matches('.device-frame, #app, .demo-entry, .project-notes, .project-dialog, .project-mobile-bar')
+  );
+}
+
+function hasScrollableContent(event, doc, deltaY = event.deltaY) {
   return event.composedPath().some(element => {
     if (!element || element.nodeType !== 1 || element === doc.body || element === doc.documentElement) return false;
     const style = doc.defaultView.getComputedStyle(element);
     if (!/auto|scroll/.test(style.overflowY)) return false;
-    return event.deltaY > 0 ? element.scrollTop + element.clientHeight < element.scrollHeight - 2 : element.scrollTop > 2;
+    return deltaY > 0 ? element.scrollTop + element.clientHeight < element.scrollHeight - 2 : element.scrollTop > 2;
   });
 }
 
 function onWheel(event, doc = document) {
   if (event.ctrlKey || Math.abs(event.deltaY) < Math.abs(event.deltaX) || Math.abs(event.deltaY) < 2) return;
-  if (doc !== document && (doc.querySelector('.sheet-backdrop, .menu.is-open, dialog[open]') || hasScrollableContent(event, doc))) return;
+  if (isDemoInteraction(event, doc)) {
+    event.stopPropagation();
+    if (!hasScrollableContent(event, doc)) event.preventDefault();
+    return;
+  }
+  if (doc !== document && (doc.querySelector('.sheet-backdrop, .menu.open, dialog[open]') || hasScrollableContent(event, doc))) return;
   event.preventDefault();
   const now = performance.now();
   if (now < nextWheelAt || sharedTransition) return;
@@ -288,6 +299,27 @@ function bindDemoWheel() {
   if (!doc || boundDocuments.has(doc)) return;
   boundDocuments.add(doc);
   doc.addEventListener('wheel', event => onWheel(event, doc), { passive: false });
+  doc.querySelectorAll('.project-notes, .project-dialog').forEach(element => {
+    element.style.overscrollBehaviorY = 'contain';
+  });
+  let touchGesture;
+  doc.addEventListener('touchstart', event => {
+    const touch = event.touches.length === 1 ? event.touches[0] : null;
+    touchGesture = touch && isDemoInteraction(event, doc) ? { x: touch.clientX, y: touch.clientY } : null;
+  }, { passive: true });
+  doc.addEventListener('touchmove', event => {
+    if (!touchGesture || event.touches.length !== 1) return;
+    const touch = event.touches[0];
+    const deltaY = touchGesture.y - touch.clientY;
+    const deltaX = touchGesture.x - touch.clientX;
+    touchGesture = { x: touch.clientX, y: touch.clientY };
+    if (Math.abs(deltaY) <= Math.abs(deltaX)) return;
+    event.stopPropagation();
+    if (event.cancelable && !hasScrollableContent(event, doc, deltaY)) event.preventDefault();
+  }, { passive: false });
+  const endTouch = () => { touchGesture = null; };
+  doc.addEventListener('touchend', endTouch, { passive: true });
+  doc.addEventListener('touchcancel', endTouch, { passive: true });
 }
 demo.addEventListener('load', bindDemoWheel);
 if (demo.contentDocument?.readyState === 'complete') bindDemoWheel();
