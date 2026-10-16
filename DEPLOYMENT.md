@@ -1,6 +1,6 @@
 # Question Box Portfolio
 
-Published portfolio for Wang Xiaotong, including seven presentation pages and the
+Published portfolio for Sijian, including seven presentation pages and the
 interactive Question Box Demo. This is a browser-local mock demonstration, not a
 live multi-user backend. Refreshing restores the initial demo state.
 
