@@ -4,7 +4,7 @@
 
 本仓库是个人作品集的静态发布版本，集中展示「我的匿名提问箱」的产品规则、界面设计与可交互前端演示。
 
-**[打开作品集](https://sijian0202.github.io/home/) · [直接体验 Demo](https://sijian0202.github.io/home/demo.html) · [阅读设计案例](./CASE_STUDY.md)**
+**[打开七页作品集与交互 Demo](https://sijian0202.github.io/home/) · [阅读设计案例](./CASE_STUDY.md)**
 
 ![我的匿名提问箱项目封面](./portfolio/cover.webp)
 
@@ -41,7 +41,7 @@ AI 在本项目中主要用于辅助开发与检查。该经历用于展示设�
 
 ## 如何体验
 
-1. 打开 [交互演示](https://sijian0202.github.io/home/demo.html)，点击体验入口。
+1. 打开 [七页作品集](https://sijian0202.github.io/home/)，从封面进入第 2 页体验交互 Demo；可通过右侧翻页导航查看全部七页。
 2. 观察「收到」「发出」等路径中的问答与回答状态。
 3. 在作品集页面查看使用流程、高保真模型与卡片结构。
 4. 结合 [设计案例](./CASE_STUDY.md) 阅读设计取舍与后续验证计划。
