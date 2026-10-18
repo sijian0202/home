@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+ <meta name="description" content="四件的匿名提问箱设计过程：用户动机、任务流程、低保真探索、用户体验地图与设计取舍。">
+ <title>查看设计过程｜我的匿名提问箱 · 四件</title>
+ <link rel="stylesheet" href="./design.css"><link rel="stylesheet" href="./entry-nav.css">
+ <script type="module" src="./entry-nav.js"></script>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+ <div class="eyebrow">我的匿名提问箱 / DESIGN PROCESS / 2026</div>
+ <h1>从想问却不敢问，<br>到愿意开口。</h1>
+ <p class="intro">围绕低压力表达与真诚回应，将用户动机、使用路径与内容边界，逐步转化为匿名问答的交互方案。</p>
+ <p class="meta">四件 · 交互设计 / 信息架构 / 视觉探索 / AI 辅助前端实现<br>正式产品由团队协作完成；此处展示设计过程与阶段性思考。</p>
+ <div class="actions"><a class="button primary" href="./demo.html">直接体验 Demo ↗</a><a class="button" href="./index.html">查看七页作品展示 ↗</a></div>
+</div></header>
+<main class="wrap">
+ <nav class="jump" aria-label="设计过程目录"><a href="#motivation">01 用户动机</a><a href="#flow">02 任务流程</a><a href="#prototype">03 原型探索</a><a href="#journey">04 体验地图</a><a href="#decisions">05 设计取舍</a></nav>
+ <section class="section" id="motivation">
+  <div class="section-number">01 / USER MOTIVATION</div><h2>先理解表达的顾虑，<br>再组织问答的方式。</h2>
+  <p class="lead">设计材料把用户动机归纳为三个方向：希望被回应、想表达但担心暴露身份，以及对他人与生活的好奇。它们构成产品设计的出发点。</p>
+  <div class="cards">
+   <article class="card"><span class="small">动机假设 01</span><h3>希望被看见</h3><p>提出问题，也是在期待回应与认同。</p><p><strong>设计对应：</strong>组织收到与发出的问答状态，让用户能够追踪回应。</p></article>
+   <article class="card"><span class="small">动机假设 02</span><h3>想表达，不想暴露</h3><p>表达真实想法时，身份暴露与被评价可能构成顾虑。</p><p><strong>设计对应：</strong>将匿名身份与内容可见范围分别定义，提供私密选择。</p></article>
+   <article class="card"><span class="small">动机假设 03</span><h3>好奇，也想分享</h3><p>从他人的问题与回答中发现值得参与的话题。</p><p><strong>设计对应：</strong>通过公开广场与多人回答组织浏览和参与。</p></article>
+  </div>
+  <figure><a href="./portfolio/process/user-motivation.webp" target="_blank" rel="noopener"><img src="./portfolio/process/user-motivation.webp" alt="原始设计材料中的用户心理总结：被需要感、低压表达欲和好奇心驱动。" loading="lazy"></a><figcaption>原始用户心理总结，点击可查看大图。图中的随机推荐等想法属于探索内容，是否实现以当前 Demo 为准。</figcaption></figure>
+  <p class="note">材料说明：本页的心理动机与情绪曲线按设计阶段的分析和预期体验呈现，尚未附可追溯的访谈样本或量化验证，不作为已验证的用户结论。</p>
+ </section>
+ <section class="section" id="flow">
+  <div class="section-number">02 / TASK FLOW</div><h2>同一个入口，<br>可能带着不同的目的。</h2>
+  <p class="lead">原始推导从用户主动进入产品开始，分别展开浏览问题、回答问题、提出问题与主页表达等路径，并标出关键节点、疑问和后续去向。</p>
+  <div class="cards">
+   <article class="card"><span class="small">浏览</span><h3>先找到感兴趣的内容</h3><p>从关注对象与公开问答进入，思考哪些内容值得继续阅读或参与。</p></article>
+   <article class="card"><span class="small">提问</span><h3>想问谁，谁能看见</h3><p>组织输入、选择接收对象、发送与查看回应的路径，区分匿名与私密。</p></article>
+   <article class="card"><span class="small">回答</span><h3>找到需要回应的问题</h3><p>区分收到与发出，以及已回答、未回答的状态，衔接后续交流。</p></article>
+  </div>
+  <figure><a href="./portfolio/process/task-flow.webp" target="_blank" rel="noopener"><img src="./portfolio/process/task-flow.webp" alt="用户使用流程逻辑推理原图，展开浏览、回答、提问和主页表达的分支与疑问节点。" loading="lazy"></a><figcaption>原始任务流程推导，点击可查看大图。保留探索时的分支与问题标记，不将所有设想视为当前功能。</figcaption></figure>
+ </section>
+ <section class="section" id="prototype">
+  <div class="section-number">03 / PROTOTYPE EXPLORATION</div><h2>从路径与状态，<br>走到界面与卡片。</h2>
+  <p class="lead">先用草图与低保真方案探索页面结构、入口和问答组织，再在高保真原型中细化导航、回答归属与多人参与时的卡片层级。</p>
+  <div class="pair">
+   <figure><a href="./portfolio/process/prototype-exploration.webp" target="_blank" rel="noopener"><img src="./portfolio/process/prototype-exploration.webp" alt="多组手绘低保真草图和早期界面探索。" loading="lazy"></a><figcaption><strong>低保真与早期版本</strong><br>用多个方案讨论布局、入口、卡片和状态。点击查看完整原图。</figcaption></figure>
+   <figure><a href="./portfolio/model.webp" target="_blank" rel="noopener"><img src="./portfolio/model.webp" alt="高保真原型的页面关系，以及回答者、提问者、围观者的卡片结构。" loading="lazy"></a><figcaption><strong>高保真与角色状态</strong><br>按回答者、提问者、围观者区分内容结构，并探索文字操作标签。</figcaption></figure>
+  </div>
+  <p class="note">这些材料展示方案探索与版本演变；目前没有将某次界面修改表述为已证明的效率提升或体验改善。</p>
+ </section>
+ <section class="section" id="journey">
+  <div class="section-number">04 / USER JOURNEY</div><h2>把一次操作，<br>放回完整的使用过程。</h2>
+  <p class="lead">体验地图覆盖发现与进入、分享链接、收到提问、回答问题、多人回答互动、发布树洞、关注社交七个阶段，同时记录用户目标、行为、预期情绪、痛点与机会。</p>
+  <figure><a href="./portfolio/process/user-journey.webp" target="_blank" rel="noopener"><img src="./portfolio/process/user-journey.webp" alt="七阶段用户体验地图，包括用户目标、行为、情绪曲线、痛点、机会点与体验感受。" loading="lazy"></a><figcaption>原始用户体验地图，点击可查看大图。情绪曲线为预期体验，尚非真实用户情绪测量；图中的早期可见性规则需与后续版本区分。</figcaption></figure>
+  <div class="cards">
+   <article class="card"><span class="small">分享 → 等待</span><h3>分享后没有反馈</h3><p>地图提示“担心没人提问”。可继续检查邀请引导、空状态和收到新问题的反馈是否清楚。</p></article>
+   <article class="card"><span class="small">收到 → 回答</span><h3>不知道怎样表达更好</h3><p>地图提出回答灵感与表达鼓励的机会；后续需要确认提示是否有帮助，以及会不会造成额外负担。</p></article>
+   <article class="card"><span class="small">回答 → 交流</span><h3>回应之后怎样继续</h3><p>地图提示对回答可见性和深入交流的顾虑。后续重点检查内容归属、可见范围与交流入口。</p></article>
+  </div>
+ </section>
+ <section class="section" id="decisions">
+  <div class="section-number">05 / DESIGN DECISIONS</div><h2>让规则与界面，<br>说同一件事。</h2>
+  <div class="decision"><h3>匿名与私密分开定义</h3><p>匿名决定提问者身份如何展示；私密决定谁能看见内容。当前演示中，私密问答不进入公开广场或他人主页，回答归属于回答者账号。需要进一步观察首次使用者能否正确预判。</p></div>
+  <div class="decision"><h3>把多人回答组织成层级</h3><p>围绕一个问题，区分当前账号的回答与他人的回答、回复。用角色和已答、未答状态说明卡片变化，后续检查用户是否能判断自己的内容与操作权限。</p></div>
+  <div class="decision"><h3>文字按钮保留识别问题</h3><p>高保真阶段探索以“转、展、收、改”等短字表达操作。视觉上的一致性需要与首次识别成本一起考虑，可继续比较短字、完整文字及图标配文字。</p></div>
+  <div class="decision"><h3>保留早期构想，说明版本边界</h3><p>原始材料同时出现“没有点赞”的产品构想与带“赞”的界面，以及“回答仅提问者可见”与公开参与的不同描述。这里保留它们作为设计过程；当前演示规则以 Demo 内的产品说明为准。</p></div>
+ </section>
+ <section class="closing"><h2>看完思路，实际操作一次。</h2><p>试着发出一个问题、找到收到的邀请，再观察同一问题下不同回答的组织方式。在线演示使用本地 Mock 数据，刷新后恢复初始状态。</p><div class="actions"><a class="button primary" href="./demo.html">直接体验 Demo ↗</a><a class="button" href="./index.html">查看七页作品展示 ↗</a></div></section>
+</main>
+<footer><div class="wrap">四件 · 我的匿名提问箱 · 本页图表整理自原始作品材料</div></footer>
+</body></html>

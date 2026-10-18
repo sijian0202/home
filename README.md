@@ -4,7 +4,9 @@
 
 本仓库是个人作品集的静态发布版本，集中展示「我的匿名提问箱」的产品规则、界面设计与可交互前端演示。
 
-**[打开七页作品集与交互 Demo](https://sijian0202.github.io/home/) · [阅读设计案例](./CASE_STUDY.md)**
+**[直接体验 Demo](https://sijian0202.github.io/home/demo.html) · [查看设计过程](https://sijian0202.github.io/home/design.html)**
+
+设计过程包含用户动机、任务流程、低保真探索和用户体验地图。页面内另附[七页作品展示](https://sijian0202.github.io/home/)与[文字设计案例](./CASE_STUDY.md)。
 
 ![我的匿名提问箱项目封面](./portfolio/cover.webp)
 
@@ -41,9 +43,9 @@ AI 在本项目中主要用于辅助开发与检查。该经历用于展示设�
 
 ## 如何体验
 
-1. 打开 [七页作品集](https://sijian0202.github.io/home/)，从封面进入第 2 页体验交互 Demo；可通过右侧翻页导航查看全部七页。
+1. 打开[直接体验 Demo](https://sijian0202.github.io/home/demo.html)，点击体验入口。
 2. 观察「收到」「发出」等路径中的问答与回答状态。
-3. 在作品集页面查看使用流程、高保真模型与卡片结构。
+3. 在[设计过程](https://sijian0202.github.io/home/design.html)查看用户动机、流程推导、低保真和体验地图，并可进入七页作品展示。
 4. 结合 [设计案例](./CASE_STUDY.md) 阅读设计取舍与后续验证计划。
 
 **版本说明**：在线 Demo 默认以 VV 账号进入，使用浏览器内的 Mock 数据；刷新恢复初始内容，不连接正式后端，也不与真实用户或其他设备同步。本仓库是展示发布副本，不是正式 App 的完整源码仓库。正式 App 的功能与限制以商店当前版本为准。
@@ -61,7 +63,11 @@ python -m http.server 8000
 ## 目录说明
 
 ```text
-index.html          作品集入口
+index.html          七页作品展示
+design.html         设计过程入口
+design.css          设计过程页面样式
+entry-nav.js        两个入口的共用导航
+entry-nav.css       共用导航样式
 demo.html           可交互演示入口
 portfolio/          作品展示图片与视觉资源
 assets/             已构建的前端脚本与样式
