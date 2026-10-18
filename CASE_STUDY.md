@@ -1,6 +1,6 @@
 # 我的匿名提问箱：从表达场景到可交互体验
 
-[直接体验 Demo](https://sijian0202.github.io/home/demo.html) · [查看设计过程](https://sijian0202.github.io/home/design.html) · [返回仓库介绍](./README.md)
+[查看设计过程](https://sijian0202.github.io/home/design.html) · [返回仓库介绍](./README.md)
 
 ## 背景与目标
 
